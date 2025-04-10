@@ -1,0 +1,74 @@
+{
+  "author": "Vox Pupuli",
+  "license": "MIT",
+  "name": "puppet-grafana_alloy",
+  "version": "0.0.1-rc0",
+  "summary": "Install and configure Grafana Alloy",
+  "source": "https://github.com/voxpupuli/puppet-grafana_alloy",
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 9.2.0 < 11.0.0"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.0.0 < 9.0.0"
+    },
+    {
+      "name": "openvox",
+      "version_requirement": ">= 7.0.0 < 9.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "11",
+        "12"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "22.04",
+        "24.04"
+      ]
+    }
+  ]
+}
