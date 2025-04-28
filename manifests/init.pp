@@ -5,23 +5,14 @@
 class grafana_alloy (
   Optional[String[1]] $config = undef,
 ) {
-  require grafana_alloy::repo
-  package { 'alloy': }
+  contain grafana_alloy::repo
+  contain grafana_alloy::install
 
-  if $config {
-    file { '/etc/alloy/config.alloy':
-      content => $config,
-      mode    => '0640',
-      owner   => 'root',
-      group   => 'alloy',
-      require => Package['alloy'],
-      notify  => Service['alloy'],
-    }
+  class { 'grafana_alloy::config':
+    config => $config,
   }
 
-  service { 'alloy':
-    ensure  => 'running',
-    enable  => true,
-    require => Package['alloy'],
-  }
+  contain grafana_alloy::service
+
+  Class['grafana_alloy::repo'] -> Class['grafana_alloy::install'] -> Class['grafana_alloy::config'] ~> Class['grafana_alloy::service']
 }
