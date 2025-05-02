@@ -2,7 +2,7 @@
   "author": "Vox Pupuli",
   "license": "MIT",
   "name": "puppet-grafana_alloy",
-  "version": "0.0.1-rc0",
+  "version": "1.0.0",
   "summary": "Install and configure Grafana Alloy",
   "source": "https://github.com/voxpupuli/puppet-grafana_alloy",
   "dependencies": [
