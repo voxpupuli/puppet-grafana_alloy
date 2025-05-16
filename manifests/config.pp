@@ -2,7 +2,7 @@
 #
 # @api private
 class grafana_alloy::config (
-  Optional[String[1]] $config = undef,
+  Optional[Variant[String[1],Sensitive[String[1]]]] $config = undef,
 ) {
   assert_private()
 
