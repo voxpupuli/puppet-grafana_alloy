@@ -7,7 +7,9 @@ class grafana_alloy (
   Optional[String[1]] $config  = undef,
   Boolean $manage_package_repo = true,
 ) {
-  contain grafana_alloy::repo
+  if $grafana_alloy::manage_package_repo {
+    contain grafana_alloy::repo
+  }
   contain grafana_alloy::install
 
   class { 'grafana_alloy::config':
