@@ -26,6 +26,13 @@ describe 'grafana_alloy' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_file('/etc/alloy/config.alloy').with_content('my config without managing repo') }
       end
+
+      context 'with sensitive configuration' do
+        let(:params) { super().merge(config: sensitive('my config')) }
+
+        it { is_expected.to compile.with_all_deps }
+        it { is_expected.to contain_file('/etc/alloy/config.alloy').with_content(sensitive('my config')) }
+      end
     end
   end
 end
