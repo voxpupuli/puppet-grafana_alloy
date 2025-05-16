@@ -2,10 +2,15 @@
 #
 # @param config
 #   The contents of the configuration file, if any
+# @param manage_package_repo Installs the package repositories
 class grafana_alloy (
   Optional[String[1]] $config = undef,
+  Boolean $manage_package_repo = true,
 ) {
-  contain grafana_alloy::repo
+  if $grafana_alloy::manage_package_repo {
+    contain grafana_alloy::repo
+    Class['grafana_alloy::repo'] -> Class['grafana_alloy::install']
+  }
   contain grafana_alloy::install
 
   class { 'grafana_alloy::config':
@@ -14,5 +19,5 @@ class grafana_alloy (
 
   contain grafana_alloy::service
 
-  Class['grafana_alloy::repo'] -> Class['grafana_alloy::install'] -> Class['grafana_alloy::config'] ~> Class['grafana_alloy::service']
+  Class['grafana_alloy::install'] -> Class['grafana_alloy::config'] ~> Class['grafana_alloy::service']
 }
