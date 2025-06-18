@@ -1,6 +1,6 @@
 ---
 fixtures:
   repositories:
-    apt: 'https://github.com/puppetlabs/puppetlabs-apt'
-    stdlib: 'https://github.com/puppetlabs/puppetlabs-stdlib'
-    yumrepo_core: 'https://github.com/puppetlabs/puppetlabs-yumrepo_core'
+    apt: https://github.com/puppetlabs/puppetlabs-apt
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib
+    yumrepo_core: https://github.com/puppetlabs/puppetlabs-yumrepo_core
