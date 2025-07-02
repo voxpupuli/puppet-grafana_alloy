@@ -1,6 +1,6 @@
 # @summary Configure Grafana repo
 class grafana_alloy::repo (
-  String $apt_key_id = lookup ('grafana_alloy::apt_key_id', { default_value => '' }),
+  Optional[String] $apt_key_id = undef,
 ) {
   case $facts['os']['family'] {
     'RedHat': {
