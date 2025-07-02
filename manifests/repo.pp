@@ -1,5 +1,6 @@
 # @summary Configure Grafana repo
 class grafana_alloy::repo (
+  String $apt_key_id = lookup ('grafana_alloy::apt_key_id', { default_value => '' }),
 ) {
   case $facts['os']['family'] {
     'RedHat': {
@@ -22,6 +23,7 @@ class grafana_alloy::repo (
           src => false,
         },
         key      => {
+          id       => $apt_key_id,
           name     => 'grafana-alloy',
           filename => 'grafana-alloy.asc',
           source   => 'https://apt.grafana.com/gpg.key',
