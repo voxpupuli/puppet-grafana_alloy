@@ -13,11 +13,36 @@
 
 * [Description](#description)
 * [License](#license)
+* [Usage](#usage)
 * [Authors](#authors)
 
 ## Description
 
 This module configures the [Grafana Alloy](https://grafana.com/docs/alloy/latest/) service.
+
+## Usage
+To use that module, you need to call the main class either via puppet :
+```puppet
+include grafana_alloy
+```
+either
+```puppet
+---
+classes:
+  - grafana_alloy
+```
+
+If you want to adapt the Alloy configuration you can use the `config` variable like this (into hiera declaration file):
+
+```puppet
+grafana_alloy::config:
+  // Logging
+  logging {
+    level = "warn"
+  }
+```
+Feel free to take a look [here](https://grafana.com/docs/alloy/latest/collect/choose-component/) and [there](https://grafana.com/docs/alloy/latest/monitor/monitor-linux/)
+
 
 ## License
 
