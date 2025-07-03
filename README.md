@@ -14,6 +14,7 @@
 * [Description](#description)
 * [License](#license)
 * [Usage](#usage)
+  * [Tuning Configuration](#tuning-configuration)
 * [Authors](#authors)
 
 ## Description
@@ -32,6 +33,7 @@ classes:
   - grafana_alloy
 ```
 
+### Tuning configuration
 If you want to adapt the Alloy configuration you can use the `config` variable like this (into hiera declaration file):
 
 ```puppet
@@ -44,6 +46,12 @@ grafana_alloy::config:
 Feel free to take a look [here](https://grafana.com/docs/alloy/latest/collect/choose-component/) and [there](https://grafana.com/docs/alloy/latest/monitor/monitor-linux/)
 
 
+If you want to pass arguments to the run commands, you can add the following content into your hieradata file:
+```puppet
+grafana_alloy::config::custom_args:
+  - "--server.http.listen-addr=%{facts.networking.ip}:12345"
+  - "--stability.level=public-preview"
+```
 ## License
 
 This project is licensed under the MIT license. A license file is in the document root of this repository.
