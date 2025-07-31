@@ -13,11 +13,31 @@
 
 * [Description](#description)
 * [License](#license)
+* [Usage](#usage)
+* [Reference](#reference)
 * [Authors](#authors)
 
 ## Description
 
 This module configures the [Grafana Alloy](https://grafana.com/docs/alloy/latest/) service.
+
+## Usage
+To use that module, you need to call the main class either via puppet :
+```puppet
+include grafana_alloy
+```
+either
+```yaml
+---
+classes:
+  - grafana_alloy
+```
+
+## Reference
+See the [REFERENCE.md](./REFERENCE.md) file
+Feel free to take a look :
+* [here](https://grafana.com/docs/alloy/latest/collect/choose-component/)
+* [there](https://grafana.com/docs/alloy/latest/monitor/monitor-linux/)
 
 ## License
 
