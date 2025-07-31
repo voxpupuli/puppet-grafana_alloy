@@ -14,7 +14,7 @@
 * [Description](#description)
 * [License](#license)
 * [Usage](#usage)
-  * [Tuning Configuration](#tuning-configuration)
+* [Reference](#reference)
 * [Authors](#authors)
 
 ## Description
@@ -27,31 +27,18 @@ To use that module, you need to call the main class either via puppet :
 include grafana_alloy
 ```
 either
-```puppet
+```yaml
 ---
 classes:
   - grafana_alloy
 ```
 
-### Tuning configuration
-If you want to adapt the Alloy configuration you can use the `config` variable like this (into hiera declaration file):
+## Reference
+See the [REFERENCE.md](./REFERENCE.md) file
+Feel free to take a look :
+* [here](https://grafana.com/docs/alloy/latest/collect/choose-component/)
+* [there](https://grafana.com/docs/alloy/latest/monitor/monitor-linux/)
 
-```puppet
-grafana_alloy::config:
-  // Logging
-  logging {
-    level = "warn"
-  }
-```
-Feel free to take a look [here](https://grafana.com/docs/alloy/latest/collect/choose-component/) and [there](https://grafana.com/docs/alloy/latest/monitor/monitor-linux/)
-
-
-If you want to pass arguments to the run commands, you can add the following content into your hieradata file:
-```puppet
-grafana_alloy::config::custom_args:
-  - "--server.http.listen-addr=%{facts.networking.ip}:12345"
-  - "--stability.level=public-preview"
-```
 ## License
 
 This project is licensed under the MIT license. A license file is in the document root of this repository.
