@@ -16,6 +16,7 @@ class grafana_alloy::config (
   $config_path = '/etc/alloy/config.alloy'
   $env_file    = $facts['os']['name'] ? {
     'Debian' => '/etc/default/alloy',
+    'Ubuntu' => '/etc/default/alloy',
     default  => '/etc/sysconfig/alloy',
   }
 
