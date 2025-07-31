@@ -6,19 +6,21 @@
 # @param custom_args
 #   This param let you pass some arguments to the run commands
 #
-# @param path
-#   This param define environment variables e.g. CUSTOM_args
-#
 # @api private
 class grafana_alloy::config (
   Optional[Variant[String[1],Sensitive[String[1]]]] $config = undef,
   Optional[Array[String[1]]] $custom_args = undef,
-  String $path = '/etc/sysconfig/alloy',
 ) {
   assert_private()
 
+  $config_path = '/etc/alloy/config.alloy'
+  $env_file    = $facts['os']['name'] ? {
+    'Debian' => '/etc/default/alloy',
+    default  => '/etc/sysconfig/alloy',
+  }
+
   if $config {
-    file { '/etc/alloy/config.alloy':
+    file { $config_path:
       content => $config,
       mode    => '0640',
       owner   => 'root',
@@ -26,21 +28,13 @@ class grafana_alloy::config (
     }
   }
 
-  if $facts['os']['name'] == 'Debian' {
-    $path = '/etc/default/alloy'
+  $custom_args_str = $custom_args ? {
+    undef   => '',
+    default => "\"${custom_args.join(' ')}\"",
   }
-  #elsif $facts['os']['name'] == 'RedHat' {
-  #  $path = '/etc/sysconfig/alloy'
-  #}
 
-  if !empty($custom_args) {
-    $custom_args_str = "\"${custom_args.join(' ')}\""
-  }
-  else {
-    $custom_args_str = ''
-  }
   file_line { 'set_alloy_custom_args':
-    path  => $path,
+    path  => $env_file,
     match => '^CUSTOM_ARGS=',
     line  => "CUSTOM_ARGS=${custom_args_str}",
   }
