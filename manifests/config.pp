@@ -13,7 +13,7 @@
 class grafana_alloy::config (
   Optional[Variant[String[1],Sensitive[String[1]]]] $config = undef,
   Optional[Array[String[1]]] $custom_args = undef,
-  Optional[Array[String[1]]] $path = undef,
+  String $path = '/etc/sysconfig/alloy',
 ) {
   assert_private()
 
@@ -29,9 +29,9 @@ class grafana_alloy::config (
   if $facts['os']['name'] == 'Debian' {
     $path = '/etc/default/alloy'
   }
-  elsif $facts['os']['name'] == 'RedHat' {
-    $path = '/etc/sysconfig/alloy'
-  }
+  #elsif $facts['os']['name'] == 'RedHat' {
+  #  $path = '/etc/sysconfig/alloy'
+  #}
 
   if !empty($custom_args) {
     $custom_args_str = "\"${custom_args.join(' ')}\""
