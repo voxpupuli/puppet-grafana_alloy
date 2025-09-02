@@ -6,7 +6,7 @@
 # @param manage_package_repo Installs the package repositories
 #
 # @example To customize the Alloy configuration, you can use the `config` variable
-#   class { 'mappy_grafana_alloy':
+#   class { 'grafana_alloy':
 #     config => @("CONFIG"),
 #       logging {
 #         level = "warn"

@@ -28,7 +28,7 @@ Install and configure Grafana Alloy
 ##### To customize the Alloy configuration, you can use the `config` variable
 
 ```puppet
-class { 'mappy_grafana_alloy':
+class { 'grafana_alloy':
   config => @("CONFIG"),
     logging {
       level = "warn"
