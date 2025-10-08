@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.0.0](https://github.com/voxpupuli/puppet-grafana_alloy/tree/v2.0.0) (2025-10-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-grafana_alloy/compare/v1.0.0...v2.0.0)
+
+**Breaking changes:**
+
+- Drop puppet, update openvox minimum version to 8.19 [\#12](https://github.com/voxpupuli/puppet-grafana_alloy/pull/12) ([TheMeier](https://github.com/TheMeier))
+
+**Implemented enhancements:**
+
+- Add support for Debian 13 [\#19](https://github.com/voxpupuli/puppet-grafana_alloy/pull/19) ([evgeni](https://github.com/evgeni))
+- Add support for EL10 [\#18](https://github.com/voxpupuli/puppet-grafana_alloy/pull/18) ([evgeni](https://github.com/evgeni))
+- Allow puppetlabs/apt 11.x [\#17](https://github.com/voxpupuli/puppet-grafana_alloy/pull/17) ([evgeni](https://github.com/evgeni))
+- Allow to pass the whole alloy config as Sensitive [\#7](https://github.com/voxpupuli/puppet-grafana_alloy/pull/7) ([dabelenda](https://github.com/dabelenda))
+- Add boolean param for managing package repos [\#6](https://github.com/voxpupuli/puppet-grafana_alloy/pull/6) ([zipkid](https://github.com/zipkid))
+
+**Closed issues:**
+
+- Sensitive data is not handled properly [\#5](https://github.com/voxpupuli/puppet-grafana_alloy/issues/5)
+
 ## [v1.0.0](https://github.com/voxpupuli/puppet-grafana_alloy/tree/v1.0.0) (2025-05-02)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-grafana_alloy/compare/849be191e71c619860a462c8ed01dc7ebf7746f8...v1.0.0)
