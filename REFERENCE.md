@@ -9,7 +9,7 @@
 #### Public Classes
 
 * [`grafana_alloy`](#grafana_alloy): Install and configure Grafana Alloy
-* [`grafana_alloy::repo`](#grafana_alloyrepo): Configure Grafana repo
+* [`grafana_alloy::repo`](#grafana_alloy--repo): Configure Grafana repo
 
 #### Private Classes
 
@@ -82,26 +82,26 @@ grafana_alloy::config::custom_args:
 
 The following parameters are available in the `grafana_alloy` class:
 
-* [`config`](#config)
-* [`manage_package_repo`](#manage_package_repo)
+* [`config`](#-grafana_alloy--config)
+* [`manage_package_repo`](#-grafana_alloy--manage_package_repo)
 
-##### <a name="config"></a>`config`
+##### <a name="-grafana_alloy--config"></a>`config`
 
 Data type: `Optional[Variant[String[1], Sensitive[String[1]]]]`
 
 The contents of the configuration file, if any
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="manage_package_repo"></a>`manage_package_repo`
+##### <a name="-grafana_alloy--manage_package_repo"></a>`manage_package_repo`
 
 Data type: `Boolean`
 
 Installs the package repositories
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="grafana_alloyrepo"></a>`grafana_alloy::repo`
+### <a name="grafana_alloy--repo"></a>`grafana_alloy::repo`
 
 Configure Grafana repo
 
