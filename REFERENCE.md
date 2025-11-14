@@ -9,7 +9,7 @@
 #### Public Classes
 
 * [`grafana_alloy`](#grafana_alloy): Install and configure Grafana Alloy
-* [`grafana_alloy::repo`](#grafana_alloy--repo): Configure Grafana repo
+* [`grafana_alloy::repo`](#grafana_alloyrepo): Configure Grafana repo
 
 #### Private Classes
 
@@ -21,57 +21,87 @@
 
 ### <a name="grafana_alloy"></a>`grafana_alloy`
 
-Install and configure Grafana Alloy
+classes:
+  - grafana_alloy
+
+grafana_alloy::config: |
+  // Logging
+  logging {
+    level = "warn"
+  }
+
+  prometheus.exporter.unix "default" {
+    include_exporter_metrics = true
+    disable_collectors       = ["mdadm"]
+  }
+
+  // Prometheus scrape
+  prometheus.scrape "default" {
+    targets = array.concat(
+      prometheus.exporter.unix.default.targets,
+      [{
+        // Self-collect metrics
+        job         = "alloy",
+        __address__ = "%{facts.networking.ip}:12345",
+      }],
+    )
+    scrape_interval = "30s"
+    forward_to = [prometheus.remote_write.mimir.receiver]
+  }
+
+  // Remote write to Mimir
+  prometheus.remote_write "mimir" {
+    endpoint {
+      url = "https://mimir.example.com/api/v1/push"
+      headers = {
+        "X-Scope-OrgID" = "%{::environment}",
+      }
+    }
+  }
+classes:
+  - grafana_alloy
+
+grafana_alloy::config::custom_args:
+  - "--server.http.listen-addr=%{facts.networking.ip}:12345"
 
 #### Examples
 
-##### To customize the Alloy configuration, you can use the `config` variable
+##### To customize the Alloy configuration, you can use the `config` parameter
 
 ```puppet
-class { 'grafana_alloy':
-  config => @("CONFIG"),
-    logging {
-      level = "warn"
-    }
-    |CONFIG
-}
+
 ```
 
 ##### If you want to pass arguments to the run commands, you can add the following content into your hieradata file:
 
 ```puppet
-class { 'grafana_alloy::config':
-  custom_args => [
-    "--server.http.listen-addr=${facts['networking']['ip']:12345",
-    "--stability.level=public-preview",
-  ],
-}
+
 ```
 
 #### Parameters
 
 The following parameters are available in the `grafana_alloy` class:
 
-* [`config`](#-grafana_alloy--config)
-* [`manage_package_repo`](#-grafana_alloy--manage_package_repo)
+* [`config`](#config)
+* [`manage_package_repo`](#manage_package_repo)
 
-##### <a name="-grafana_alloy--config"></a>`config`
+##### <a name="config"></a>`config`
 
 Data type: `Optional[Variant[String[1], Sensitive[String[1]]]]`
 
 The contents of the configuration file, if any
 
-Default value: `undef`
+Default value: ``undef``
 
-##### <a name="-grafana_alloy--manage_package_repo"></a>`manage_package_repo`
+##### <a name="manage_package_repo"></a>`manage_package_repo`
 
 Data type: `Boolean`
 
 Installs the package repositories
 
-Default value: `true`
+Default value: ``true``
 
-### <a name="grafana_alloy--repo"></a>`grafana_alloy::repo`
+### <a name="grafana_alloyrepo"></a>`grafana_alloy::repo`
 
 Configure Grafana repo
 

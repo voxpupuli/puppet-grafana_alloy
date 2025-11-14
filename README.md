@@ -9,7 +9,7 @@
 [![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/puppet-grafana_alloy)
 [![MIT License](https://img.shields.io/github/license/voxpupuli/puppet-grafana_alloy.svg)](LICENSE)
 
-## ToC
+[[_TOC_]]
 
 * [Description](#description)
 * [License](#license)
@@ -22,11 +22,12 @@
 This module configures the [Grafana Alloy](https://grafana.com/docs/alloy/latest/) service.
 
 ## Usage
-To use that module, you need to call the main class either via puppet :
+To use this module, you need to include the main class either via puppet or hieradata.
 ```puppet
 include grafana_alloy
 ```
-either
+
+hieradata example:
 ```yaml
 ---
 classes:
