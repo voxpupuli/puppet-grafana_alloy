@@ -10,15 +10,15 @@
 class grafana_alloy::config (
   Optional[Variant[String[1],Sensitive[String[1]]]] $config = undef,
   Optional[Array[String[1]]] $custom_args = undef,
-) {
-  assert_private()
-
-  $config_path = '/etc/alloy/config.alloy'
-  $env_file  = $facts['os']['name'] ? {
+  String $env_file  = $facts['os']['name'] ? {
     'Debian' => '/etc/default/alloy',
     'Ubuntu' => '/etc/default/alloy',
     default  => '/etc/sysconfig/alloy',
   }
+) {
+  assert_private()
+
+  $config_path = '/etc/alloy/config.alloy'
 
   if $config {
     file { $config_path:
