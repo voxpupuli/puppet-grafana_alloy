@@ -14,7 +14,7 @@ class grafana_alloy::config (
   assert_private()
 
   $config_path = '/etc/alloy/config.alloy'
-  $env_file    = $facts['os']['name'] ? {
+  $env_file  = $facts['os']['name'] ? {
     'Debian' => '/etc/default/alloy',
     'Ubuntu' => '/etc/default/alloy',
     default  => '/etc/sysconfig/alloy',
