@@ -9,15 +9,36 @@
 [![puppetmodule.info docs](http://www.puppetmodule.info/images/badge.png)](http://www.puppetmodule.info/m/puppet-grafana_alloy)
 [![MIT License](https://img.shields.io/github/license/voxpupuli/puppet-grafana_alloy.svg)](LICENSE)
 
-## ToC
+[[_TOC_]]
 
 * [Description](#description)
 * [License](#license)
+* [Usage](#usage)
+* [Reference](#reference)
 * [Authors](#authors)
 
 ## Description
 
 This module configures the [Grafana Alloy](https://grafana.com/docs/alloy/latest/) service.
+
+## Usage
+To use this module, you need to include the main class either via puppet or hieradata.
+```puppet
+include grafana_alloy
+```
+
+hieradata example:
+```yaml
+---
+classes:
+  - grafana_alloy
+```
+
+## Reference
+See the [REFERENCE.md](./REFERENCE.md) file
+Feel free to take a look :
+* [here](https://grafana.com/docs/alloy/latest/collect/choose-component/)
+* [there](https://grafana.com/docs/alloy/latest/monitor/monitor-linux/)
 
 ## License
 
