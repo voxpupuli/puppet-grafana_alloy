@@ -4,5 +4,7 @@
 class grafana_alloy::install () {
   assert_private()
 
-  package { 'alloy': }
+  package { 'alloy':
+    ensure => $grafana_alloy::version,
+  }
 }

@@ -38,4 +38,21 @@ describe 'grafana_alloy' do
       end
     end
   end
+
+  describe 'with version' do
+    it_behaves_like 'an idempotent resource' do
+      let(:manifest) do
+        <<-PUPPET
+        class { 'grafana_alloy':
+          version => '1.9.2-1',
+        }
+        PUPPET
+      end
+    end
+
+    describe command('alloy --version') do
+      its(:exit_status) { is_expected.to eq 0 }
+      its(:stdout) { is_expected.to match %r{alloy, version v1\.9\.2} }
+    end
+  end
 end
