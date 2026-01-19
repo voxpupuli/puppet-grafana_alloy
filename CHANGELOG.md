@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.1.0](https://github.com/voxpupuli/puppet-grafana_alloy/tree/v2.1.0) (2026-01-19)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-grafana_alloy/compare/v2.0.0...v2.1.0)
+
+**Implemented enhancements:**
+
+- Add `version` parameter [\#23](https://github.com/voxpupuli/puppet-grafana_alloy/pull/23) ([alexjfisher](https://github.com/alexjfisher))
+
 ## [v2.0.0](https://github.com/voxpupuli/puppet-grafana_alloy/tree/v2.0.0) (2025-10-08)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-grafana_alloy/compare/v1.0.0...v2.0.0)
